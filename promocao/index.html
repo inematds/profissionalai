@@ -59,12 +59,10 @@ img{display:block;max-width:100%}
     radial-gradient(closest-side at 30% 40%,rgba(52,211,153,.16),transparent 70%),
     radial-gradient(closest-side at 70% 35%,rgba(56,189,248,.15),transparent 70%),
     radial-gradient(closest-side at 50% 62%,rgba(167,139,250,.12),transparent 72%);
-  filter:blur(34px);animation:drift 26s ease-in-out infinite alternate;}
+  filter:blur(28px);animation:drift 28s ease-in-out infinite alternate;}
 @keyframes drift{0%{transform:translateX(-50%) translateY(0) scale(1)}100%{transform:translateX(-47%) translateY(2.5%) scale(1.08)}}
-.grain{position:fixed;inset:-200%;z-index:60;pointer-events:none;opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation:grain 7s steps(6) infinite;}
-@keyframes grain{0%{transform:translate(0,0)}10%{transform:translate(-5%,-8%)}30%{transform:translate(3%,-12%)}50%{transform:translate(-7%,4%)}70%{transform:translate(5%,9%)}90%{transform:translate(-3%,6%)}100%{transform:translate(0,0)}}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
 /* ============ LOADER ============ */
 #loader{position:fixed;inset:0;z-index:100;background:var(--bg);
@@ -337,7 +335,7 @@ footer .copy{width:100%;font-size:.8rem;color:var(--ice-dim);border-top:1px soli
   <!-- PLATE 1 -->
   <section class="plate wrap" id="mapa">
     <figure class="plate-fig reveal">
-      <img src="../assets/img/ia-todas-profissoes.png" alt="Mapa da IA em todas as profissões: engenharia, educação, atendimento, dados, finanças, gestão, tecnologia e comunicação" loading="lazy" data-zoom>
+      <img src="../assets/img/ia-todas-profissoes.webp" width="1400" height="788" alt="Mapa da IA em todas as profissões: engenharia, educação, atendimento, dados, finanças, gestão, tecnologia e comunicação" loading="lazy" decoding="async" data-zoom>
       <figcaption>Toque para ampliar</figcaption>
     </figure>
     <div class="plate-copy">
@@ -366,7 +364,7 @@ footer .copy{width:100%;font-size:.8rem;color:var(--ice-dim);border-top:1px soli
   <!-- PLATE 2 -->
   <section class="plate flip wrap" id="blindagem">
     <figure class="plate-fig reveal">
-      <img src="../assets/img/blindar-carreira.png" alt="As 6 habilidades de IA que transformam uma carreira vulnerável em uma carreira protegida" loading="lazy" data-zoom>
+      <img src="../assets/img/blindar-carreira.webp" width="1400" height="788" alt="As 6 habilidades de IA que transformam uma carreira vulnerável em uma carreira protegida" loading="lazy" decoding="async" data-zoom>
       <figcaption>Toque para ampliar</figcaption>
     </figure>
     <div class="plate-copy">
@@ -424,7 +422,7 @@ footer .copy{width:100%;font-size:.8rem;color:var(--ice-dim);border-top:1px soli
   <!-- PLATE 3 (infográfico) -->
   <section class="plate wrap" id="infografico">
     <figure class="plate-fig reveal">
-      <img src="../assets/img/6-habilidades.png" alt="Infográfico das 6 habilidades de IA para blindar a carreira, em um único quadro" loading="lazy" data-zoom style="max-width:min(420px,100%)">
+      <img src="../assets/img/6-habilidades.webp" width="1122" height="1402" alt="Infográfico das 6 habilidades de IA para blindar a carreira, em um único quadro" loading="lazy" decoding="async" data-zoom style="max-width:min(420px,100%)">
       <figcaption>Toque para ampliar, salvar ou imprimir</figcaption>
     </figure>
     <div class="plate-copy">
@@ -524,12 +522,14 @@ footer .copy{width:100%;font-size:.8rem;color:var(--ice-dim);border-top:1px soli
   if(!reduced && window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
     if(lenis) lenis.on('scroll', ScrollTrigger.update);
-    document.querySelectorAll('.plate-fig img').forEach(function(img){
-      gsap.fromTo(img,{yPercent:-5},{yPercent:5,ease:'none',
-        scrollTrigger:{trigger:img.closest('.plate'),start:'top bottom',end:'bottom top',scrub:true}});
-    });
-    var orb=document.querySelector('.hero .orb');
-    if(orb) gsap.to(orb,{yPercent:16,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    if(window.matchMedia('(min-width:821px) and (pointer:fine)').matches){
+      document.querySelectorAll('.plate-fig img').forEach(function(img){
+        gsap.fromTo(img,{yPercent:-3},{yPercent:3,ease:'none',
+          scrollTrigger:{trigger:img.closest('.plate'),start:'top bottom',end:'bottom top',scrub:.4}});
+      });
+      var orb=document.querySelector('.hero .orb');
+      if(orb) gsap.to(orb,{yPercent:14,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.4}});
+    }
   }
 
   var lb=document.getElementById('lightbox'), lbImg=lb.querySelector('img');
