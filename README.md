@@ -30,3 +30,11 @@ As estatísticas são atribuídas às fontes citadas: WEF *Future of Jobs Report
 ## Licença
 
 Conteúdo educacional do INEMA.CLUB. Sinta-se livre para estudar e compartilhar.
+
+<!-- inema-backlink:v1 -->
+## Mais no INEMA.CLUB
+
+- [Ficha completa deste curso](https://www.inema.club/cursos/161-integra-sua-profissao-com-ia/)
+- [Guia: como aprender inteligência artificial](https://www.inema.club/aprender-inteligencia-artificial/)
+- [Todos os cursos](https://www.inema.club/cursos/)
+<!-- /inema-backlink:v1 -->
